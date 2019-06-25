@@ -2,3 +2,5 @@
 golib/src
 golib/bin
 golib/pkg
+
+*.local

@@ -1,18 +1,20 @@
 #!/bin/sh
 
-if [[ $dotfiles == "" ]]; then
-	dotfiles=$(pwd)
-fi
+dotfiles=$(pwd)
 
-ln -s ${dotfiles}/shell/system.mac.sh ~/.systemrc
-ln -s ${dotfiles}/shell/dockerrc.mac.sh ~/.dockerrc
-ln -s ${dotfiles}/shell/workspace.mac.sh ~/.workspacerc
-ln -s ${dotfiles}/shell/shortcut.mac.sh ~/.shortcutrc
+# by uname
+ln -s ${dotfiles}/shell/system.`uname`.sh ~/.systemrc
+ln -s ${dotfiles}/shell/software.`uname`.sh ~/.softwarerc
 
-# ln -s ${dotfiles}/shell/bashrc.mac.sh ~/.bashrc
-# ln -s ${dotfiles}/bash_profile.mac.sh ~/.bash_profile
+# universal
+ln -s ${dotfiles}/shell/workspace.sh ~/.workspacerc
+ln -s ${dotfiles}/shell/dockerrc.sh ~/.dockerrc
+ln -s ${dotfiles}/shell/aliases.sh ~/.aliasesrc
 
-ln -s ${dotfiles}/zshrc.mac.sh ~/.zshrc
+# bash
+# deprecated
 
-ln -s ${dotfiles}/git/gitconfig ~/.gitconfig
-ln -s ${dotfiles}/git/gitignore_global ~/.gitignore_global
+# zsh
+ln -s ${dotfiles}/shell/zshrc.sh ~/.zshrc
+
+ln -s ${dotfiles}/git/gitignore_global ~/.gitignore_globalrc

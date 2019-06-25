@@ -12,7 +12,7 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/m
 $ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 $ cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
 $ cat ./tool/brew-leaves.txt | xargs -t -I {} brew install {}
-# fix curl for cask
+# fix curl for cask (maybe proxychains4 need this?)
 $ sudo mv /usr/bin/curl /usr/bin/curl.mac
 $ sudo ln -s /usr/local/opt/curl/bin/curl /usr/bin/curl
 # if failed use proxychains4

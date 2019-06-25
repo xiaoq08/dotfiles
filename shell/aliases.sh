@@ -1,7 +1,3 @@
-# require brew
-export HOMEBREW_VERBOSE=1
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
-
 # require git
 gsync() {
 	branch='develop'
@@ -29,24 +25,6 @@ gsync() {
 }
 alias gsm='gsync master'
 alias gbdd='git branch -D'
-
-# require Ghostscript
-shrinkpdf() {
-	gs -q -dNOPAUSE -dBATCH -dSAFER \
-		-sDEVICE=pdfwrite \
-		-dCompatibilityLevel=1.3 \
-		-dPDFSETTINGS=/screen \
-		-dEmbedAllFonts=true \
-		-dSubsetFonts=true \
-		-dColorImageDownsampleType=/Bicubic \
-		-dColorImageResolution=72 \
-		-dGrayImageDownsampleType=/Bicubic \
-		-dGrayImageResolution=72 \
-		-dMonoImageDownsampleType=/Bicubic \
-		-dMonoImageResolution=72 \
-		-sOutputFile=out.pdf \
-		$1
-}
 
 # require python
 alias pj='python -m json.tool'
