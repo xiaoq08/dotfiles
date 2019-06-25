@@ -1,0 +1,8 @@
+cloc
+curl
+direnv
+kubernetes-cli
+node
+proxychains-ng
+shfmt
+wget

@@ -1,0 +1,4 @@
+!golib/.envrc
+golib/src
+golib/bin
+golib/pkg
