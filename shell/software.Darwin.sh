@@ -24,9 +24,15 @@ shrinkpdf() {
 alias cwl="ls -l $WSPACE/dotfiles/code-workspace"
 alias c.="code ."
 cwc() {
+	localFn=$WSPACE/dotfiles/code-workspace/$1.local.code-workspace
 	fn=$WSPACE/dotfiles/code-workspace/$1.code-workspace
-	echo "opening $fn ..."
-	code $fn
+	if [ -f $localFn ];then
+		echo "opening code workspace $localFn ..."
+    	code $localFn
+	else
+		echo "opening code workspace $fn ..."
+		code $fn
+  	fi
 }
 
 

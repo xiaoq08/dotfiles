@@ -4,3 +4,4 @@ golib/bin
 golib/pkg
 
 *.local
+*.local.code-workspace

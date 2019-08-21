@@ -1,5 +1,6 @@
 # require git
-gsync() {
+# this only works for github fork
+gsync_github() {
 	branch='develop'
 	if [[ $1 ]]; then
 		branch=$1
@@ -23,7 +24,31 @@ gsync() {
 		git stash pop
 	fi
 }
-alias gsm='gsync master'
+
+gsync_gitlab() {
+	branch='develop'
+	if [[ $1 ]]; then
+		branch=$1
+	fi
+	echo "==> git stash"
+	cur_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+	stashed=$(git stash)
+	echo $stashed
+	echo "==> switch to branch=$branch, sync direction: origin -> local (no upstream)"
+	git checkout $branch
+	git branch -vv | grep $branch
+	git remote -v | grep -E "upstream|origin"
+	echo "==> fetch from origin && merge"
+	git fetch origin -p && git merge origin/$branch
+	echo "==> switch back branch=$cur_branch"
+	git checkout $cur_branch
+	if ! [[ $stashed == No* ]]; then
+		echo "==> git stash pop"
+		git stash pop
+	fi
+}
+
+alias gsm='gsync_gitlab master'
 alias gbdd='git branch -D'
 
 # require python

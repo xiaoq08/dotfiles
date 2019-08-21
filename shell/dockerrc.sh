@@ -59,3 +59,10 @@ kubessh() {
 	TERM=xterm
 	kubectl exec -i -t $1 env COLUMNS=$COLUMNS LINES=$LINES TERM=$TERM $cmd
 }
+
+# [knative]
+kingress() {
+	ip=`minikube ip`
+	port=`$(kubectl get svc istio-ingressgateway --namespace istio-system --output 'jsonpath={.spec.ports[?(@.port==80)].nodePort}')`
+	echo ${ip}:${port}
+}
